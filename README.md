@@ -11,15 +11,15 @@ Project to manage personal crypto information using Google App Script, Google Sp
 
 1. Configure constants.
 2. Clone repository with `git clone`.
-3. Modify the code as needed
-4. Login with Clasp: `clasp login`
-5. Push with Clasp: `clasp push`
-6. Configure the activator to run the script when forms are completed
-7. Complete the form.
-8. See results on Google Spread Sheets
+3. Modify the code as needed.
+4. Set the corresponding `scriptId` on *.clasp.json*.
+5. Login with Clasp: `clasp login`.
+6. Push with Clasp: `clasp push`.
+7. Configure the activator to run the script when forms are completed.
+8. Complete the form.
+9. See results on Google Spread Sheets.
 
 This is just for testing or personal use. For more advanced usage, read [this](https://github.com/brunopk/crypto-app-script/blob/main/doc/deployments.md) documentation. Configuration of activators to fire Google Scripts can be done as explained [here](https://user-images.githubusercontent.com/6526093/186764687-1fdcf48b-7691-4872-8a0a-4b557e8c95c9.png).
-
 
 ## Configuring constants
 
