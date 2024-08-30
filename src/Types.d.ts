@@ -31,13 +31,17 @@ type ColumnMapping<T> = {
 }
 
 // TODO: it should contain where is the coin (example: metamask, binance, etc, data.coins['ADA'] could be an array)
+
+/**
+ * Event types are defined as constant (see src/Constants.ts)
+ */
 type Snapshot = {
   createdAt: Date
   lastEvent: {
-    eventDate: Date,
-    type: EventType,
+    date: Date,
+    type: string,s
     summary: string,
-    url?: string
+    link?: string
   },
   data: {
     totalInvestment: number

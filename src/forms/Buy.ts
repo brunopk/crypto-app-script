@@ -7,7 +7,7 @@ type BuyFormData = {
 }
 
 
-const BuyHandlerConfig: FormHandlerConfiguration<Data> = {
+const BUY_HANDLER_CONFIG: FormHandlerConfiguration<BuyFormData> = {
   sheetName: "Compra",
   sheetId: "X",
   eventSummaryTemplate: "Compra de %COIN%",
@@ -25,18 +25,24 @@ const BuyHandlerConfig: FormHandlerConfiguration<Data> = {
 class BuyHandler extends BaseFormHandler<BuyFormData> {
 
   constructor() {
-    super(Buy.mapping)
+    super(BUY_HANDLER_CONFIG.sheetId, BUY_HANDLER_CONFIG.sheetName, BUY_HANDLER_CONFIG.mapping)
   }
 
-  processData(data: BuyFormData): void {
-    this.snapshot.createdAt = new Date()
-    this.snapshot.lastEvent = {
-      type: "TODO",
-      eventDate: data.date,
-      summary: Buy.EVENT_SUMMARY_TEMPLATE.replace("%COIN%", data.coin),
-      url: getLinkToLastRow()
+  generateNewSnapshot(currentSnapshot: Snapshot, data: BuyFormData): Snapshot {
+    // TODO: generate the newSnapshot with data and currentSnapshot
+    // TODO: implement a method to generate "empty" snapshot (only for the first time)
+    const newSnapshot: Snapshot = {
+      createdAt: new Date(),
+      lastEvent: {
+        type: EVENT_BUY,
+        date: data.date,
+        link: getLinkToLastRow()
+      }
+      
     }
+
+    return newSnapshot
   }
 }
 
-FORM_HANDLERS[BuyHandlerConfig.sheetName] = new BuyHandler()
+FORM_HANDLERS[BUY_HANDLER_CONFIG.sheetName] = new BuyHandler()

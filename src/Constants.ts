@@ -6,5 +6,7 @@ const SNAPSHOTS_EVENT_NAME_COLUMN = 0
 const SNAPSHOTS_SNAPSHOT_VERSION_COLUMN = 0
 const SNAPSHOTS_BASE64_COLUMN = 0
 
+const EVENT_BUY = "Compra criptomoneda"
+
 
 

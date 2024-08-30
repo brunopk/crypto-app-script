@@ -23,6 +23,8 @@ class MovementHandler extends BaseFormHandler<Movement.Data> {
     super(Movement.mapping)
   }
 
+  // TODO: define processData as in src/Buy.ts
+  
   processData(data: Movement.Data): void {
     throw new Error("Method not implemented.")
   }
