@@ -1,4 +1,6 @@
-CHARS = "ABCDEFGHIJKLMNOPQRSTUVYXZ"
+const FORM_HANDLERS : {[name: string]: FormHandler } = {}
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVYXZ"
 
 const BALANCE_SHEET = "Balance"
 
@@ -128,13 +130,17 @@ function processInsertedRowOnSwapSheet() {
 
 /********************************/
 
+
+// test 
+
+
 function main() {
   const sheet = SpreadsheetApp.getActiveSheet()
   const sheetName = sheet.getName()
 
-  if (!(sheetName in Object.keys(FormHandler)))
+  if (!(sheetName in Object.keys(FORM_HANDLERS)))
     throw new Error(`There's no handler defined to process inserted rows on sheet '${sheetName}'`)
 
-  FormHandler[sheetName].run()
+  FORM_HANDLERS[sheetName].run()
   // console.log(readLastInsertedRow({money: 3, quantity: 4}))
 }

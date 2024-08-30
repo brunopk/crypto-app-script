@@ -1,26 +1,17 @@
-declare namespace Buy {
-  enum Method {
-    BINANCE, 
-    BINANCE_P2P
-  }
-  type Data = {
-    date: Date,
-    method: string,
-    coin: string
-    quantity: number,
-    fees: number 
-  }
-  let mapping: Form.ColumnMapping<Data>
-  let SHEET_NAME: string
-  let SHEET_ID: string
-  let EVENT_SUMMARY_TEMPLATE: string
+type BuyFormData = {
+  date: Date,
+  method: string,
+  coin: string
+  quantity: number,
+  fees: number 
 }
 
-namespace Buy {
-  SHEET_NAME = "Compra"
-  SHEET_ID = "X"
-  EVENT_SUMMARY_TEMPLATE = "Compra de %COIN%"
-  mapping = { 
+
+const BuyHandlerConfig: FormHandlerConfiguration<Data> = {
+  sheetName: "Compra",
+  sheetId: "X",
+  eventSummaryTemplate: "Compra de %COIN%",
+  mapping: { 
     date: 1,
     method: 2,
     coin: 3,
@@ -31,15 +22,16 @@ namespace Buy {
 
 
 
-class BuyHandler extends BaseFormHandler<Buy.Data> {
+class BuyHandler extends BaseFormHandler<BuyFormData> {
 
   constructor() {
     super(Buy.mapping)
   }
 
-  processData(data: Buy.Data): void {
+  processData(data: BuyFormData): void {
     this.snapshot.createdAt = new Date()
     this.snapshot.lastEvent = {
+      type: "TODO",
       eventDate: data.date,
       summary: Buy.EVENT_SUMMARY_TEMPLATE.replace("%COIN%", data.coin),
       url: getLinkToLastRow()
@@ -47,7 +39,4 @@ class BuyHandler extends BaseFormHandler<Buy.Data> {
   }
 }
 
-if (typeof FormHandler === 'undefined')
-  FormHandler = {}
-
-FormHandler[Buy.SHEET_NAME] = new BuyHandler()
+FORM_HANDLERS[BuyHandlerConfig.sheetName] = new BuyHandler()

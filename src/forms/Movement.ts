@@ -1,3 +1,6 @@
+// TODO: define a type for Movement (similar to BuyFormData in src/Buy.ts)
+// TODO: define a const for configurations (similar to BuyHandlerConfig in src/Buy.ts)
+
 declare namespace Movement {
   type Data = {
     a: string
@@ -11,6 +14,7 @@ namespace Movement {
   mapping = {a: 3}
 }
 
+type Data = {}
 
 
 class MovementHandler extends BaseFormHandler<Movement.Data> {
@@ -24,7 +28,4 @@ class MovementHandler extends BaseFormHandler<Movement.Data> {
   }
 }
 
-if (typeof FormHandler === 'undefined')
-  FormHandler = {}
-
-FormHandler[Movement.SHEET_NAME] = new MovementHandler()
+FORM_HANDLERS[Movement.SHEET_NAME] = new MovementHandler()

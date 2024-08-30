@@ -11,11 +11,16 @@ declare namespace ExternalAPIs {
   }
 }
 
-declare let FormHandler: { [associatedSheetName: string]: FormHandler }
-
 declare let CHARS: string
 
 declare type FormSheet = RowDefinition
+
+type FormHandlerConfiguration<T> = {
+  mapping: ColumnMapping<T>
+  sheetName: string
+  sheetId: string
+  eventSummaryTemplate: string
+}
 
 type RowDefinition = {
   [name: string]: number | string | Date
