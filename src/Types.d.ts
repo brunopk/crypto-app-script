@@ -10,9 +10,6 @@ declare namespace ExternalAPIs {
     }
   }
 }
-
-declare let CHARS: string
-
 declare type FormSheet = RowDefinition
 
 type FormHandlerConfiguration<T> = {
@@ -30,34 +27,29 @@ type ColumnMapping<T> = {
   [Property in keyof T]: number
 }
 
-// TODO: it should contain where is the coin (example: metamask, binance, etc, data.coins['ADA'] could be an array)
-
 /**
  * Event types are defined as constant (see src/Constants.ts)
+ * Investments could be for instance a farming pool (together with another coin)
  */
 type Snapshot = {
   createdAt: Date
   lastEvent: {
     date: Date,
-    type: string,s
-    summary: string,
+    formData: object,
     link?: string
   },
-  data: {
-    totalInvestment: number
-    prices: {
-      [crypto: string]: {
-        value: number,
-        obtainedFrom: string
-      }
+  totalInvestmentInDollars: number,
+  coins: {
+    [crypto: string]: {
+      total: number,
+      currentValueInDollars: number,
+      perWallet: {[walletName: string]: number}
+      invested: [{
+        site: string,
+        amount: number
+      }]
     }
-    coins: {
-      [crypto: string]: {
-        total: number,
-        totalInvested: number
-      }
-    }
-  }
+  },
 }
 
 interface FormHandler {

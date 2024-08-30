@@ -1,5 +1,5 @@
 function getLastSnapshot(): Snapshot {
-  // TODO CONTINUE HERE (similar to saveSnapshot) then 1: implement all Buy.ts 2: generate new snapshot (save it using saveSnapshot) 3: test reading new snapshot (test this method)
+  // TODO CONTINUE HERE (similar to saveSnapshot) then 1: generate new snapshot using testSaveSnapshot function 2: test reading new snapshot (test this method)
   // if there is no snapshot (empty spreadsheet), this method should get an "empty" snapshot (implement a method to generate "empty" snapshot (only for the first time))
   throw new Error('Not implemented')
 }
