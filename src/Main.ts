@@ -1,5 +1,3 @@
-const FORM_HANDLERS : {[name: string]: FormHandler } = {}
-
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVYXZ"
 
 const BALANCE_SHEET = "Balance"

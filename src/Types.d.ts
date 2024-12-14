@@ -33,7 +33,7 @@ type ColumnMapping<T> = {
  */
 type Snapshot = {
   createdAt: Date
-  lastEvent: {
+  lastEvent?: {
     date: Date,
     formData: object,
     link?: string

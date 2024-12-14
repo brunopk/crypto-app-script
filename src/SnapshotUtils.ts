@@ -1,7 +1,14 @@
 function getLastSnapshot(): Snapshot {
   // TODO CONTINUE HERE (similar to saveSnapshot) then 1: generate new snapshot using testSaveSnapshot function 2: test reading new snapshot (test this method)
   // if there is no snapshot (empty spreadsheet), this method should get an "empty" snapshot (implement a method to generate "empty" snapshot (only for the first time))
-  throw new Error('Not implemented')
+  if (isSheetEmpty(SNAPSHOTS_SPREADSHEET_ID, SNAPSHOTS_SPREADSHEET_NAME))
+    return {
+      createdAt: new Date(),
+      totalInvestmentInDollars: 0,
+      coins: {}
+    }
+  const lastRow = getLastRow(SNAPSHOTS_SPREADSHEET_ID, SNAPSHOTS_SPREADSHEET_NAME)
+  console.info(lastRow)
 }
 
 // TODO: event type could be a link to the form sheet which represent the event
@@ -11,8 +18,10 @@ function saveSnapshot(snapshot: Snapshot) {
   const blob = Utilities.newBlob(stringifiedJson)
   const compressedBlob = Utilities.gzip(blob)
 
-  console.log(`Saving snapshot to sheet '${SNAPSHOTS_SPREADSHEET_NAME}' of spreadsheet '${SNAPSHOTS_SPREADSHEET_ID}' ...`)
-  
+  console.log(
+    `Saving snapshot to sheet '${SNAPSHOTS_SPREADSHEET_NAME}' of spreadsheet '${SNAPSHOTS_SPREADSHEET_ID}' ...`
+  )
+
   // this is used only log size snapshot size (as base 64) before compressing and it may be removed in future
   const blobAsBase64 = Utilities.base64Encode(blob.getBytes())
   console.log(`Base 64 size before compression (string length): ${blobAsBase64.length}`)

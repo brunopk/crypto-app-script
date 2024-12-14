@@ -33,6 +33,35 @@ function getLastRow<T extends RowDefinition>(spreadSheetId: string, sheetName: s
   return data
 }
 
+/**
+ * Read the last inserted row in a given sheet within a given spread sheet.
+ * @param spreadSheetId spread sheet id (it can be obtained from the spread sheet URL)
+ * @param sheetName sheet name within the spread sheet to which the row will be added
+ * @returns Returns an array of objects or undefined if the sheet is empty
+ */ 
+function getLastRow(spreadSheetId: string, sheetName: string): any[] | undefined {
+  const spreadSheet = SpreadsheetApp.openById(spreadSheetId);
+  const sheet = spreadSheet.getSheetByName(sheetName);
+  const lastRowIndex = sheet?.getLastRow()!
+  const lastColumnIndex = sheet?.getLastColumn()!
+  const lastRowData = sheet?.getRange(lastRowIndex, 1, 1, lastColumnIndex).getValues()[0]; 
+  return lastRowData;
+}
+
+/**
+ * Checks if the sheet is empty discarding the first row for headers.
+ * @param spreadSheetId spread sheet id (it can be obtained from the spread sheet URL)
+ * @param sheetName sheet name within the spread sheet to which the row will be added
+ * @returns Returns an array of objects or undefined if the sheet is empty
+ */ 
+function isSheetEmpty(spreadSheetId: string, sheetName: string): boolean {
+  const spreadSheet = SpreadsheetApp.openById(spreadSheetId);
+  const sheet = spreadSheet.getSheetByName(sheetName);
+  const lastRowIndex = sheet?.getLastRow()!
+  return lastRowIndex != 1
+}
+
+
 function getLinkToLastRow(): string {
   const range = SpreadsheetApp.getActiveRange()
   const rowNumber = range.getRow();

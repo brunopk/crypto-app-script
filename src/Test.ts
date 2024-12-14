@@ -31,3 +31,8 @@ function testSaveSnapshot() {
   }
   saveSnapshot(snapshot)
 }
+
+function testGetLastSnapshot() {
+  const snapshot = getLastSnapshot()
+  console.info(snapshot)
+}
