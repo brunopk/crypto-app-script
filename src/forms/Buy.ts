@@ -28,9 +28,8 @@ class BuyHandler extends BaseFormHandler<BuyFormData> {
     super(BUY_HANDLER_CONFIG.sheetId, BUY_HANDLER_CONFIG.sheetName, BUY_HANDLER_CONFIG.mapping)
   }
 
-  generateNewSnapshot(currentSnapshot: Snapshot, data: BuyFormData): Snapshot {
-    // TODO: generate the newSnapshot with data and currentSnapshot
-    // TODO: implement a method to generate "empty" snapshot (only for the first time)
+  handleData(currentSnapshot: Snapshot, data: BuyFormData): Snapshot {
+    // TODO: CONTINUE HERE
     const newSnapshot: Snapshot = {
       createdAt: new Date(),
       lastEvent: {

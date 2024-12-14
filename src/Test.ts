@@ -19,15 +19,12 @@ function testSaveSnapshot() {
   const snapshot: Snapshot = {
     createdAt: new Date(), 
     lastEvent: {
-      eventDate: new Date(),
-      type: EventType.BUY,
-      summary: 'but 10 ADA',
+      date: new Date(),
+      summary: 'Buying ADA',
+      formData: {}
     },
-    data: {
-      totalInvestment: 10, 
-      prices: {}, 
-      coins: {}
-    } 
+    totalInvestmentInDollars: 100,
+    coins: {}
   }
   saveSnapshot(snapshot)
 }

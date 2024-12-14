@@ -11,11 +11,11 @@ abstract class BaseFormHandler<T extends FormSheet> implements FormHandler {
     this.columnMapping = columnMapping
   }
 
-  run() {
+  processFormData() {
     const data = getLastRow(this.spreadsheetId, this.sheetName, this.columnMapping) as T
-    const currentSnapshot = getLastSnapshot()
-    this.generateNewSnapshot(currentSnapshot, data)
-    // TODO: this should pass the new snapshot to all sheet handlers to process and write the corresponding information
+    const snapshot = getLastSnapshot()
+    const newSnapshot = this.handleData(snapshot, data)
+    saveSnapshot(newSnapshot)
   }
 
   /**
@@ -23,6 +23,6 @@ abstract class BaseFormHandler<T extends FormSheet> implements FormHandler {
    * @param currentSnapshot represents the current information or status of the system condensed into one object
    * @param data data that comes from a Google Form
    */
-  abstract generateNewSnapshot(currentSnapshot: Snapshot, data: T): Snapshot
+  abstract handleData(currentSnapshot: Snapshot, data: T): Snapshot
 
 }

@@ -35,6 +35,7 @@ type Snapshot = {
   createdAt: Date
   lastEvent?: {
     date: Date,
+    summary: string
     formData: object,
     link?: string
   },
@@ -53,5 +54,9 @@ type Snapshot = {
 }
 
 interface FormHandler {
-  run: () => void
+  /**
+   * Process data submitted from a Google Form into its corresponding sheet.
+   * Each Google Form is associated with a unique FormHandler class.
+   */
+  processFormData: () => void
 }

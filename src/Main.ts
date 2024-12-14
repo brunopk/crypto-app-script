@@ -139,6 +139,5 @@ function main() {
   if (!(sheetName in Object.keys(FORM_HANDLERS)))
     throw new Error(`There's no handler defined to process inserted rows on sheet '${sheetName}'`)
 
-  FORM_HANDLERS[sheetName].run()
-  // console.log(readLastInsertedRow({money: 3, quantity: 4}))
+  FORM_HANDLERS[sheetName].processFormData()
 }

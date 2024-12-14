@@ -7,9 +7,10 @@
  */
 function addRow(spreadSheetId: string, sheetName: string, row: any[]): number {
   const spreadSheet = SpreadsheetApp.openById(spreadSheetId)
+  const spreadSheetName = spreadSheet.getName()
   spreadSheet.setActiveSheet(spreadSheet.getSheetByName(sheetName)!)
   spreadSheet.appendRow(row)
-  console.log(`New row added on the sheet '${sheetName}' within the spread sheet '${spreadSheetId}'.`)
+  console.log(`New row added on the sheet '${sheetName}' within the spread sheet '${spreadSheetName}'.`)
   return spreadSheet.getDataRange().getLastRow()
 }
 
@@ -58,7 +59,7 @@ function isSheetEmpty(spreadSheetId: string, sheetName: string): boolean {
   const spreadSheet = SpreadsheetApp.openById(spreadSheetId);
   const sheet = spreadSheet.getSheetByName(sheetName);
   const lastRowIndex = sheet?.getLastRow()!
-  return lastRowIndex != 1
+  return lastRowIndex == 1
 }
 
 

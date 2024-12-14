@@ -9,24 +9,29 @@ Project to manage personal crypto information using Google App Script, Google Sp
 
 ## Basic usage
 
-1. Create spreadsheets (see [Spreadsheets](#spreadsheets)).
-2. Configure constants.
-3. Clone repository with `git clone`.
-4. Modify the code as needed.
-5. Set the corresponding `scriptId` on *.clasp.json*.
-6. Login with Clasp: `clasp login`.
-7. Push with Clasp: `clasp push`.
-8. Configure the activator to run the script when forms are completed.
-9. Complete the form.
-10. See results on Google Spread Sheets.
+1. Clone repository with `git clone`.
+2. Modify the code as needed.
+3. Set the corresponding `scriptId` on *.clasp.json*.
+4. Login with Clasp: `clasp login`.
+5. Push with Clasp: `clasp push`.
+6. Configure the activator to run the script when forms are completed.
+7. Create spreadsheets (see [Spreadsheets](#spreadsheets)).
+8. Configure constants (see [Configuring constants](#configuring-constants)).
+9. Configure form handlers (see [Configuring form handlers](#configuring-form-handlers)).
+10. Complete the form.
+11. See results on Google Spread Sheets.
 
 This is just for testing or personal use. For more advanced usage, read [this](https://github.com/brunopk/crypto-app-script/blob/main/doc/deployments.md) documentation. Configuration of activators to fire Google Scripts can be done as explained [here](https://user-images.githubusercontent.com/6526093/186764687-1fdcf48b-7691-4872-8a0a-4b557e8c95c9.png).
 
 ## Configuring constants
 
-In order to use the script some constants needs to be defined. Some constants are declared in the `Types.d.ts` file.
+In order to use the script some constants needs to be defined. Some constants are declared in the [Constants.ts](src/Constants.ts) file.
 
 > Avoid uploading constants that points to Google Spread Sheet files to public repositories like GitHub, in order to prevent unwanted access to your Google Drive account.
+
+## Configuring form handlers
+
+Each Google Form is associated with a unique `FormHandler` class, along with constants, all contained in a single file. These files are located in the [src/forms](src/forms/) folder. For each `FormHandler`, there's a constant named with like <HANDLER_NAME>_CONFIG which **must be** edited.
 
 ## Spreadsheets
 
