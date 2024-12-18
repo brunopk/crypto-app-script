@@ -1,3 +1,7 @@
+/**
+ * Represent a exchange between two cryptocurrencies. 
+ */
+
 // TODO: define a type for Exchange (similar to BuyFormData in src/Buy.ts)
 // TODO: define a const for configurations (similar to BuyHandlerConfig in src/Buy.ts)
 

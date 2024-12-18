@@ -1,8 +1,14 @@
+/**
+ * Represents the action of purchasing a cryptocurrency with fiat money
+ */
+
 type BuyFormData = {
   date: Date,
   asset: string
   quantity: number,
-  fees: number 
+  fees: number,
+  method: string // Values defined in BUY_METHOD_* constants
+  wallet: string //  Values defined in WALLET_* constants
 }
 
 
@@ -14,7 +20,9 @@ const BUY_HANDLER_CONFIG: FormHandlerConfiguration<BuyFormData> = {
     date: 1,
     asset: 2,
     quantity: 3,
-    fees: 4 
+    fees: 4,
+    method: 5,
+    wallet: 6
   }
 }
 
