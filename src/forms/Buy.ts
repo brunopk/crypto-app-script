@@ -1,7 +1,6 @@
 type BuyFormData = {
   date: Date,
-  method: string,
-  coin: string
+  asset: string
   quantity: number,
   fees: number 
 }
@@ -13,10 +12,9 @@ const BUY_HANDLER_CONFIG: FormHandlerConfiguration<BuyFormData> = {
   eventSummaryTemplate: "Compra de %COIN%",
   mapping: { 
     date: 1,
-    method: 2,
-    coin: 3,
-    quantity: 4,
-    fees: 5
+    asset: 2,
+    quantity: 3,
+    fees: 4 
   }
 }
 

@@ -1,15 +1,3 @@
-declare namespace ExternalAPIs {
-  namespace CoinAPI {
-    namespace ExchangeRate {
-      type GetSpecificRateResponse = {
-        time: string,
-        asset_id_base: string,
-        asset_id_quote: string,
-        rate: number
-      }
-    }
-  }
-}
 declare type FormSheet = RowDefinition
 
 type FormHandlerConfiguration<T> = {

@@ -33,3 +33,12 @@ function testGetLastSnapshot() {
   const snapshot = getLastSnapshot()
   console.info(snapshot)
 }
+
+
+function testGetPrice() {
+  const srcAsset = "ADA"
+  const targetAsset = "BUSD"
+  const date = new Date()
+  const price = getPrice(date, "ADA", "USD")
+  console.log(`The price for ${srcAsset}-${targetAsset} at ${date.toISOString()} is ${price}`)
+}
